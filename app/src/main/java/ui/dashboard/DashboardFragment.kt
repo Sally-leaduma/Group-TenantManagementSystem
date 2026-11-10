@@ -1,14 +1,15 @@
-package com.example.tenantmanagementsystem
+package com.example.tenantmanagementsystem.ui.dashboard
+
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-// Generated from fragment_dashboard.xml (View Binding)
-import com.example.tenantmanagementsystem.databinding.FragmentDashboardBinding
 import androidx.navigation.fragment.findNavController
-import android.util.Log
+import com.example.tenantmanagementsystem.data.repository.TenantRepository
+import com.example.tenantmanagementsystem.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
     private var _binding: FragmentDashboardBinding? = null
