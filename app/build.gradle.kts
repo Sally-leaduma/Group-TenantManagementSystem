@@ -3,7 +3,8 @@ plugins {
     // NEW: switch Safe Args on for this app.
     // It must come BELOW the android.application line
     id("androidx.navigation.safeargs.kotlin")
-}
+    id("com.google.devtools.ksp")}
+
 
 android {
     namespace = "com.example.tenantmanagementsystem"
@@ -56,4 +57,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
     // Gives Fragments "by activityViewModels()" (used in Stage 4)
     implementation("androidx.fragment:fragment-ktx:1.8.5")
+    // Room: the local database library
+    implementation("androidx.room:room-runtime:2.7.2")
+    implementation("androidx.room:room-ktx:2.7.2")
+    // Generates the Room code (ksp, not implementation)
+    ksp("androidx.room:room-compiler:2.7.2")
 }
