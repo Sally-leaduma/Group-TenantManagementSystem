@@ -7,16 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
-import com.example.tenantmanagementsystem.R
-
 import com.example.tenantmanagementsystem.databinding.FragmentViewTenantsBinding
-import com.example.tenantmanagementsystem.data.repository.TenantRepository
+import com.example.tenantmanagementsystem.ui.viewmodel.TenantViewModel
+
 class ViewTenantsFragment : Fragment() {
     private var _binding: FragmentViewTenantsBinding? = null
     private val binding get() = _binding!!
 
     private val args: ViewTenantsFragmentArgs by navArgs()
+
+    // The SHARED ViewModel: every Fragment in MainActivity gets the SAME one
+    private val viewModel: TenantViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,19 +42,15 @@ class ViewTenantsFragment : Fragment() {
 
         binding.callButton.setOnClickListener {
             if (newTenant != null) {
-                // Fixed: Accessing the corrected property name and using Kotlin's KTX extension function .toUri()
                 val dialUri = "tel:${newTenant.phone}".toUri()
                 val intent = Intent(Intent.ACTION_DIAL, dialUri)
                 startActivity(intent)
             }
         }
 
-        val tenants = TenantRepository.tenants
-        if (tenants.isEmpty()) {
-            // Fixed: Moved hardcoded text to Android strings resource layout helper
-            binding.allTenantsTextView.text = getString(R.string.no_tenants_yet)
-        } else {
-            binding.allTenantsTextView.text = tenants.joinToString("\n\n") { it.summary() }
+        // OBSERVER: runs now, and again every time allTenantsText changes
+        viewModel.allTenantsText.observe(viewLifecycleOwner) { text ->
+            binding.allTenantsTextView.text = text
         }
     }
 
