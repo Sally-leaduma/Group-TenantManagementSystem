@@ -18,3 +18,13 @@ An Android application built with Kotlin and Jetpack Compose for managing rental
 1. Clone the repository:
    ```bash
    git clone [https://github.com/Sally-leaduma/Group-TenantManagementSystem.git](https://github.com/Sally-leaduma/Group-TenantManagementSystem.git)
+   ## Team Members and Contributions
+## Team Contribution
+| Stage | Contribution | Member Name | Admission Number |
+|---|---|---|---|
+| Stage 1 | Project setup and organization (Team Lead) | Sally Ntangaswa Leaduma | 192101 |
+| Stage 2 | ViewModel implementation | Ndegwa Eddie | 189608 |
+| Stage 3 | Room database implementation | Kosgei Tony Kibet | 190511 |
+| Stage 4 | UI screens implementation | Onesmus Gateru | 193016 |
+| Stage 5 | Data integration | Isaac Munene | 175124 |
+| Stage 6 | Release preparation and documentation | Agnes Maina | 180591 |
